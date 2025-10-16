@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// Revision: zoom più lento per WAACK ME UP per un effetto più cinematico
+// Versione corretta / tipizzata per Vercel + TS
 
 export default function Site() {
   const [open, setOpen] = useState(false);
-const revealRefs = useRef<HTMLElement[]>([]);
+
+  // Tipi espliciti per evitare 'never[]' e 'any'
+  const revealRefs = useRef<HTMLElement[]>([]);
   revealRefs.current = [];
 
   useEffect(() => {
@@ -24,12 +26,12 @@ const revealRefs = useRef<HTMLElement[]>([]);
     return () => observer.disconnect();
   }, []);
 
-  cconst addToReveal = (el: HTMLElement | null) => {
-  if (el && !revealRefs.current.includes(el)) {
-    revealRefs.current.push(el);
-  }
-};
-
+  const addToReveal = (el: HTMLElement | null) => {
+    if (el && !revealRefs.current.includes(el)) {
+      revealRefs.current.push(el);
+    }
+  };
+  
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       <style>{`
@@ -43,7 +45,7 @@ const revealRefs = useRef<HTMLElement[]>([]);
         @keyframes pulseText { 0% { text-shadow: 0 0 10px rgba(233,163,255,0.15); color: rgba(233,163,255,0.3); } 50% { text-shadow: 0 0 30px rgba(168,85,247,0.8); color: rgba(168,85,247,0.8); } 100% { text-shadow: 0 0 10px rgba(233,163,255,0.15); color: rgba(233,163,255,0.3); } }
       `}</style>
 
-      <div className="pointer-events-none fixed inset-0 opacity-80" aria-hidden={true}>
+<div className="pointer-events-none fixed inset-0 opacity-80" aria-hidden={true}>
         <div className="absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full blur-3xl" style={{background:"radial-gradient(closest-side, rgba(168,85,247,0.7), transparent)"}} />
       </div>
 
