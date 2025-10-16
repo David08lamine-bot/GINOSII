@@ -80,7 +80,7 @@ export default function App() {
             Votre soutien nous aide à développer des projets inclusifs et accessibles. Merci de contribuer à la vitalité de notre communauté.
           </p>
           <div className="mt-6">
-            <button onClick={() => setShowForm(True)} className="px-6 py-3 rounded-xl bg-white text-black text-sm font-semibold hover:bg-white/90">
+            <button onClick={() => setShowForm(true)} className="px-6 py-3 rounded-xl bg-white text-black text-sm font-semibold hover:bg-white/90">
               Faire un don
             </button>
           </div>
