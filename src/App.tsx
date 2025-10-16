@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function Site() {
   const [open, setOpen] = useState(false);
-  const revealRefs = useRef([]);
+const revealRefs = useRef<HTMLElement[]>([]);
   revealRefs.current = [];
 
   useEffect(() => {
@@ -24,11 +24,11 @@ export default function Site() {
     return () => observer.disconnect();
   }, []);
 
-  const addToReveal = (el) => {
-    if (el && !revealRefs.current.includes(el)) {
-      revealRefs.current.push(el);
-    }
-  };
+  cconst addToReveal = (el: HTMLElement | null) => {
+  if (el && !revealRefs.current.includes(el)) {
+    revealRefs.current.push(el);
+  }
+};
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -43,7 +43,7 @@ export default function Site() {
         @keyframes pulseText { 0% { text-shadow: 0 0 10px rgba(233,163,255,0.15); color: rgba(233,163,255,0.3); } 50% { text-shadow: 0 0 30px rgba(168,85,247,0.8); color: rgba(168,85,247,0.8); } 100% { text-shadow: 0 0 10px rgba(233,163,255,0.15); color: rgba(233,163,255,0.3); } }
       `}</style>
 
-      <div className="pointer-events-none fixed inset-0 opacity-80" aria-hidden>
+      <div className="pointer-events-none fixed inset-0 opacity-80" aria-hidden={true}>
         <div className="absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full blur-3xl" style={{background:"radial-gradient(closest-side, rgba(168,85,247,0.7), transparent)"}} />
       </div>
 
